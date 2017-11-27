@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session words</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="left">
+            <form action='/process' method='post'>
+                {% csrf_token %}
+                Word:<br>
+                <input type="text" name="word">
+                <br>
+                Color:
+                <br>
+                <input type="radio" name="color" value="red" checked> 
+                Red<br>
+                <input type="radio" name="color" value="blue"> 
+                Blue
+                <br>
+                <input type="radio" name="color" value="green"> 
+                Green 
+                <br>
+                Bold?
+                <br>
+                <input type="radio" name="font" value="bold" checked> bold<br>
+                <input type="radio" name="font" value="nah" > nah               
+                <br>
+                <input type="submit" value="Add to Session">
+            </form>
+        </div>
+        <div id="right">
+            <form action="/clear" method="post">
+                {% csrf_token %}
+                <input type="submit" value="clear">
+            </form>
+
+            {%for i in request.session.queue%}
+            {%if i.font%}
+            <h2 style="color: {{i.color}}">{{i.word}}</h2>
+            {%else%}
+            <p style="color: {{i.color}}">{{i.word}}</p>
+            {%endif%}
+            <p> posted at {{i.time}}</p>
+            {%endfor%}
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+#wrapper{
+    margin: 0px auto;
+    height: 1000px;
+    width: 1400px;
+    background-color: green;
+    text-align: center;
+}
+
+#top{
+    height: 150px;
+    width: 100%;
+    background-color: red;
+    text-align: left;
+    vertical-align: center;
+    box-sizing: border-box;
+    padding-top: 40px;
+}
+
+#store{
+    display: inline-block;
+    text-align: left;
+    height: 600px;
+    width: 1200px;
+    background-color: #4576F4;
+    margin: 30px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
